@@ -1,5 +1,7 @@
-package com.coderscampus.assignment9;
+package com.coderscampus.assignment9.web;
 
+import com.coderscampus.assignment9.FileReaderService;
+import com.coderscampus.assignment9.Recipe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -31,7 +33,7 @@ public class RecipeController {
 
     @GetMapping("/vegetarian")
     public List<Recipe> vegetarianRecipes() {
-        return fileReaderService.getRecipes().stream().filter(Recipe::getVegetarian).collect(Collectors.toList());w
+        return fileReaderService.getRecipes().stream().filter(Recipe::getVegetarian).collect(Collectors.toList());
     }
 
     @GetMapping("/all-recipes")
