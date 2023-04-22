@@ -1,4 +1,4 @@
-package com.coderscampus.assignment9;
+package com.coderscampus.assignment9.domain;
 
 
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;

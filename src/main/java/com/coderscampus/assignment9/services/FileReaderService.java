@@ -1,5 +1,6 @@
-package com.coderscampus.assignment9;
+package com.coderscampus.assignment9.services;
 
+import com.coderscampus.assignment9.domain.Recipe;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.stereotype.Service;
@@ -13,12 +14,11 @@ import java.util.List;
 @Service
 public class FileReaderService {
 
-    private List<Recipe> recipes = new ArrayList<>();
 
 
-    Recipe recipe;
-
-    public FileReaderService() throws IOException {
+    public List<Recipe> readRecipes() throws IOException {
+        List<Recipe> recipes = new ArrayList<>();
+        Recipe recipe;
         Reader in = new FileReader("recipes.txt");
         Iterable<CSVRecord> records = CSVFormat.RFC4180.withFirstRecordAsHeader().withIgnoreSurroundingSpaces().withEscape('\\').parse(in);
         for (CSVRecord record : records) {
@@ -37,9 +37,6 @@ public class FileReaderService {
             recipe.setVegetarian(Boolean.parseBoolean(record.get(11)));
             recipes.add(recipe);
         }
-    }
-
-    public List<Recipe> getRecipes() {
         return recipes;
     }
 
